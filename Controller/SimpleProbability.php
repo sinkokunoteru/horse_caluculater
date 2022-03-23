@@ -1,26 +1,51 @@
 <?php
 class SimpleProbability {
 
+  //買い方の種類を定義
+  public array $buykinds = [
+    "tanshou" => "単勝",
+    "fukushou" => "複勝",
+    "wakuren" => "枠連",
+    "umaren" => "馬連",
+    "umatan" => "馬単",
+    "wide" => "ワイド",
+    "sanrenpuku" => "3連複",
+    "sanrentan" => "3連単"
+  ];
+
   //送信された値を格納
   public function __construct() {
-    if(isset($_POST['number_of_runners'])) {
+    if(isset($_POST['number_of_runners']) && is_numeric($_POST['number_of_runners'])) {
       $this->horses = $_POST['number_of_runners'];
     }else{
-      exit;
+      $this->horses = 1;
     }
+  }
+
+  public function mainProcess() {
+    $probability['tanshou'] = $this->tanshou();
+    $probability['fukushou'] = $this->fukushou();
+    $probability['wakuren'] = $this->wakuren();
+    $probability['umaren'] = $this->umaren();
+    $probability['umatan'] = $this->umatan();
+    $probability['wide'] = $this->wide();
+    $probability['sanrenpuku'] = $this->sanrenpuku();
+    $probability['sanrentan'] = $this->sanrentan();
+    return $probability;
   }
 
   //単勝の確率計算
   public function  tanshou() {
-    return $1/$this->horses;
+
+    return 1/$this->horses;
   }
 
   //複勝の確率計算
   public function fukushou() {
     if($this->horses >= 8) {
-      $C = $this->Combination($this->horses, 3);
+      $result = 1/$this->Combination($this->horses, 3);
     }else if($this->horses >= 5) {
-      $C = $this->Combination($this->horses, 2);
+      $result = 1/$this->Combination($this->horses, 2);
     } else {
       $result = "販売がありません";
     }

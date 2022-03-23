@@ -1,6 +1,7 @@
 <?php
   require_once(ROOT_PATH.'Controller/SimpleProbability.php');
   $cal = new SimpleProbability();
+  $probability = $cal->mainProcess();
  ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -14,22 +15,9 @@
       <input type="text" name="number_of_runners" id="number_of_runners">
       <input type='submit'>
     </form>
-    <p>出馬数<?= $cal->horses?>匹の場合<p>
-    <p>単勝</p>
-    <p id="output_result"><?=$cal->tanshou()?></p>
-    <p>複勝</p>
-    <p id="output_result"><?=$cal->fukushou()?></p>
-    <p>枠連</p>
-    <p id="output_result"><?=$cal->wakuren()?></p>
-    <p>馬連</p>
-    <p id="output_result"><?=$cal->umaren()?></p>
-    <p>馬単</p>
-    <p id="output_result"><?=$cal->umatan()?></p>
-    <p>ワイド</p>
-    <p id="output_result"><?=$cal->wide()?></p>
-    <p>3連複</p>
-    <p id="output_result"><?=$cal->sanrenpuku()?></p>
-    <p>3連単</p>
-    <p id="output_result"><?=$cal->sanrentan()?></p>
+    <?php foreach($probability as $key => $result): ?>
+      <p><?=$cal->buykinds[$key]?></p>
+      <p id="output_result"><?=$probability[$key]?></p>
+    <?php endforeach; ?>
  </body>
 </html>
