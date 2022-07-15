@@ -1,0 +1,20 @@
+header {
+  height:500px;
+  background: -moz-linear-gradient(top, #FFC778, #FFF);
+  background: -webkit-linear-gradient(top, #FFC778, #FFF);
+  background: linear-gradient(to bottom, #FFC778, #FFF);
+}
+
+.header_menu {
+  display:flex;
+}
+
+.header_menu li {
+  margin:15px;
+  list-style: none;
+}
+
+.header_menu li a {
+  color:white;
+  text-decoration:none;
+}
