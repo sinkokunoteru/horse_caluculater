@@ -1,8 +1,8 @@
 header {
   height:500px;
-  background: -moz-linear-gradient(top, #FFC778, #FFF);
-  background: -webkit-linear-gradient(top, #FFC778, #FFF);
-  background: linear-gradient(to bottom, #FFC778, #FFF);
+  background: -moz-linear-gradient(top, #39a4d0, #efefef);
+  background: -webkit-linear-gradient(top, #39a4d0, #efefef);
+  background: linear-gradient(top bottom, #39a4d0, #efefef);
 }
 
 .header_menu {
